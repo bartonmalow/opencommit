@@ -178,7 +178,7 @@ ${chalk.grey('——————————————————')}`
 
 export async function commit(
   extraArgs: string[] = [],
-  isStageAllFlag: Boolean = false,
+  isStageAllFlag: boolean = false,
   fullGitMojiSpec: boolean = false,
   skipCommitConfirmation: boolean = false
 ) {

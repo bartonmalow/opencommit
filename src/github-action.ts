@@ -3,7 +3,7 @@ import { unlinkSync, writeFileSync } from 'fs';
 import core from '@actions/core';
 import exec from '@actions/exec';
 import github from '@actions/github';
-import { intro, outro } from '@clack/prompts';
+import { intro, outro, note } from '@clack/prompts';
 import { PushEvent } from '@octokit/webhooks-types';
 
 import { generateCommitMessageByDiff } from './generateCommitMessageFromGitDiff';
@@ -158,6 +158,7 @@ async function improveCommitMessages(
     `#!/bin/bash
     count=$(cat count.txt)
     git commit --amend -F commit-$count.txt
+    git notes append -m "OpenCommit improved this commit message."
     echo $(( count + 1 )) > count.txt`
   );
 
@@ -202,6 +203,11 @@ async function run() {
       const payload = github.context.payload as PushEvent;
 
       const commits = payload.commits;
+
+      if (github.context.payload.note.includes('OpenCommit improved this commit message.')) {
+        outro('Commit messages already improved.');
+        return;
+      }
 
       // Set local Git user identity for future git history manipulations
       if (payload.pusher.email)
