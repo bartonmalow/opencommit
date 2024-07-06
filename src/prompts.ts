@@ -1,7 +1,5 @@
-import {
-  ChatCompletionRequestMessage,
-  ChatCompletionRequestMessageRoleEnum
-} from 'openai';
+import ChatCompletionRequestMessage from 'openai';
+import ChatCompletionRequestMessageRoleEnum from 'openai';
 
 import { note } from '@clack/prompts';
 

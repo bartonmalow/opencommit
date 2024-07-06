@@ -2,11 +2,9 @@ import axios from 'axios';
 import chalk from 'chalk';
 import { execa } from 'execa';
 
-import {
-  ChatCompletionRequestMessage,
-  Configuration as OpenAiApiConfiguration,
-  OpenAIApi
-} from 'openai';
+import ChatCompletionRequestMessage from 'openai';
+import Configuration from 'openai';
+import OpenAIApi from 'openai';
 
 import { intro, outro } from '@clack/prompts';
 

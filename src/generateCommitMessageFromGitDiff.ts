@@ -1,7 +1,5 @@
-import {
-  ChatCompletionRequestMessage,
-  ChatCompletionRequestMessageRoleEnum
-} from 'openai';
+import ChatCompletionRequestMessage from 'openai';
+import ChatCompletionRequestMessageRoleEnum from 'openai';
 
 import { DEFAULT_TOKEN_LIMITS, getConfig } from './commands/config';
 import { getMainCommitPrompt } from './prompts';
